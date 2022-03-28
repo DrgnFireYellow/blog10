@@ -1,0 +1,2 @@
+import buildposts
+buildposts.run()
