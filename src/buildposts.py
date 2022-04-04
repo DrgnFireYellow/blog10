@@ -1,6 +1,8 @@
+import datetime
 import os
 import rich
 import shutil
+import sqlite3
 def buildpost(post):
     # Open Post
     postfile = open(f'{os.getcwd()}/posts/{post}/post.txt')
@@ -34,11 +36,14 @@ def buildpost(post):
         builtpost.write(f'<img src="cover.png" style="width: 100%; height: auto;">')
     builtpost.write(postcontent)
     builtpost.close()
+    dbconnection = sqlite3.connect(f'{os.getcwd()}/build/db.sqlite3')
+    dbcursor = dbconnection.cursor()
+    dbconnection.commit()
+    dbconnection.close()
 def run():
-    rich.print("[yellow]Building Posts...[/yellow]", end="")
+    rich.print("[yellow]Building Posts...[/yellow]")
     posts = os.listdir(f'{os.getcwd()}/posts')
     for post in posts:
         buildpost(post)
-    rich.print("[green4]done[/green4]")
 if __name__ == "__main__":
     run()

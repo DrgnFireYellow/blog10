@@ -11,10 +11,9 @@ def buildnav():
     except FileExistsError:
         builtnav = open(f'{os.getcwd()}/build/nav.html', mode='w')
     if data["theme"] == 'yellow':
-        builtnav.write(f'<nav style="color: white; float: left; background: #e6e600; font-size: 25px; padding: 5px; position: sticky; top: 0; font-family: arial;">{data["name"]}</nav>')
+        builtnav.write(f'<nav style="color: white; width: 100%; background: #e6e600; font-size: 25px; padding: 5px; position: sticky; top: 0; font-family: arial;">{data["name"]}</nav>')
     else:
-        builtnav.write(f'<nav style="color: white; overflow: hidden; background: {data["theme"]}; font-size: 25px; padding: 5px; position: sticky; top: 0; font-family: arial;">{data["name"]}</nav>')
+        builtnav.write(f'<nav style="color: white; width: 100%; background: {data["theme"]}; font-size: 25px; padding: 5px; position: sticky; top: 0; font-family: arial;">{data["name"]}</nav>')
 def run():
-    rich.print("[yellow]Building Navbar...", end="")
+    rich.print("[yellow]Building Navbar...")
     buildnav()
-    rich.print("[green4]done[/green4]")
